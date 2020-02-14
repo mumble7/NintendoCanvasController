@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Assignment 04</title>
+    <style>
+        .wrapper {
+            width: 610px;
+            height: 200px;
+            background: #f5f5f5;
+        }
+
+        .side {
+            width: 300px;
+            height: 200px;
+            display: block;
+            float: left;
+        }
+
+        .left {
+            border-right: 2px solid black;
+        }
+
+    </style>
+
+    <!-- TODO New Line: Add a reference to CreateJS on the CreateJS CDN. -->
+
+    <script src="https://code.createjs.com/1.0.0/createjs.min.js"></script>
+
+    <script>
+        var stage;
+        var container;
+
+        function init() {
+
+            /*
+              Instructions
+              ------------
+              Draw the NES controller using the CreateJS Graphics Functions.
+              You will use at least the following functions:
+                beginFill()
+                drawRect()
+                drawCircle()
+                moveTo()
+                lineTo()
+                setStrokeStyle()
+
+              Things that are required:
+                The basic outline of the controller
+                All shapes and buttons.
+                Using the correct colors.
+                All text.
+
+              Things that are optional (Extra Credit):
+                Drop Shadow +5
+                Radial Gradient +5
+                Rounded Corners +5
+
+              Colors:
+                Black: #000000
+                White: #FFFFFF
+                Light Grey: #D3D7CF
+                Dark Grey: #A6A6A6
+                Red: #A40000
+            */
+
+            // Your code starts here.
+            //-----------------------
+            canvas = document.getElementById("demoCanvas");
+            stage = new createjs.Stage("demoCanvas");
+            container = new createjs.Shape();
+
+            var cw = canvas.width;
+            var ch = canvas.height;
+
+
+            //Background
+            container.graphics.beginFill("#D3D7CF").drawRoundRectComplex(2, 2, 285, 131, 13, 13, 13, 13)
+                .beginFill("#000000").drawRoundRectComplex(10, 18, 260, 105, 3, 3, 3, 3);
+
+            //Left Touch Pad
+
+            container.graphics.beginFill("#ffffff").setStrokeStyle(2).beginStroke("#ffffff").moveTo(28, 60).lineTo(48, 60)
+                .beginFill("#ffffff").beginStroke("#ffffff").moveTo(48, 41).lineTo(48, 61)
+                .beginStroke("#ffffff").moveTo(47, 41).lineTo(63, 41)
+                .beginFill("#ffffff").beginStroke("#ffffff").moveTo(63, 41).lineTo(63, 61)
+                .beginStroke("#ffffff").moveTo(84, 60).lineTo(62, 60)
+                .beginStroke("#ffffff").moveTo(84, 60).lineTo(84, 75)
+                .beginStroke("#ffffff").moveTo(63, 75).lineTo(84, 75)
+                .beginStroke("#ffffff").moveTo(63, 75).lineTo(63, 93)
+                .beginStroke("#ffffff").moveTo(47, 93).lineTo(63, 93)
+                .beginStroke("#ffffff").moveTo(47, 93).lineTo(47, 74)
+                .beginStroke("#ffffff").moveTo(28, 74).lineTo(48, 74)
+                .beginStroke("#ffffff").moveTo(28, 74).lineTo(28, 59);
+
+            //Circle Left Pad
+            container.graphics.beginFill("#A6A6A6").beginStroke("#000000").drawCircle(55, 68, 4);
+
+
+
+
+
+
+
+            //Center Column
+            container.graphics.beginFill("#A6A6A6").drawRoundRectComplex(100, 18, 75, 15, 2, 2, 2, 2)
+                .beginFill("#A6A6A6").drawRoundRectComplex(100, 39, 75, 15, 2, 2, 2, 2)
+                .beginFill("#A6A6A6").drawRoundRectComplex(100, 60, 75, 15, 2, 2, 2, 2)
+                .beginFill("#A6A6A6").drawRoundRectComplex(100, 113, 75, 10, 2, 2, 0, 0);
+
+
+
+            container.graphics.beginFill("#D3D7CF").drawRoundRectComplex(100, 81, 75, 25, 2, 2, 2, 2)
+                .beginFill("#000000").drawRoundRectComplex(108, 88, 28, 10, 5, 5, 5, 5)
+                .beginFill("#000000").drawRoundRectComplex(141, 88, 28, 10, 5, 5, 5, 5);
+
+
+            //Right Buttons
+            container.graphics.beginFill("#D3D7CF").drawRoundRectComplex(185, 78, 33, 33, 2, 2, 2, 2)
+                .beginFill("#D3D7CF").drawRoundRectComplex(225, 78, 33, 33, 2, 2, 2, 2);
+
+            //            container.graphics.beginRadialGradientFill(["#FFFFFF", "#000000", "#FFFFFF"], [0, .5, 1], 100, 100, 0, 100, 100, 100).drawCircle(202, 95, 13)
+            //                .beginRadialGradientFill(["#6A6A66", "#A40000"], [0, 1], 40, 40, 0, 10, 10, 13).drawCircle(242, 95, 13);
+
+            var circle = new createjs.Shape();
+            circle.graphics
+                .beginRadialGradientFill(["#000000", "#A40000", "#A40000"], [0, .1, 1], 201, 94, 1, 195, 100, 20)
+                .drawCircle(201, 95, 14)
+                .beginRadialGradientFill(["#000000", "#A40000", "#A40000"], [0, .1, 1], 243, 94, .1, 220, 100, 30)
+                .drawCircle(241, 95, 14);
+
+
+
+
+            //Text
+            var text = new createjs.Text("SELECT   START", "bold 8px Arial", "#A40000");
+            text.textAlign = "center";
+            text.x = 137;
+            text.y = 64;
+
+            var text2 = new createjs.Text("A", "bold 15px Arial", "#A40000");
+            //text.textAlign = "center";
+            text2.x = 208;
+            text2.y = 110;
+
+            var text3 = new createjs.Text("B", "bold 15px Arial", "#A40000");
+            //text.textAlign = "center";
+            text3.x = 248;
+            text3.y = 110;
+
+
+
+
+
+            container.x = 0;
+            container.y = 0;
+            stage.addChild(container, text, text2, text3, circle);
+            stage.update();
+
+            //-----------------------
+            // Your code ends here.
+
+        }
+
+    </script>
+</head>
+<!-- No Changes Needed to the HTML -->
+
+<body onload="init()">
+    <div class="wrapper">
+
+        <div class="side left">
+            <!-- YOUR LINK IS BUSTED           <img src="http://thomasbell.weber.edu/attachments/ntm3534/nes_controller.png" width="300">-->
+            <img src="NintendoNESController.png" width="300">
+            <p>Reference Image</p>
+        </div>
+
+        <div class="side">
+            <canvas id="demoCanvas" width="300" height="150"></canvas>
+            <p>Your Drawing</p>
+        </div>
+
+    </div>
+</body>
+
+</html>
